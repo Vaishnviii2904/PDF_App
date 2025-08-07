@@ -1,4 +1,3 @@
-# rag.py
 from sentence_transformers import SentenceTransformer, util
 from transformers import pipeline
 import re
@@ -50,7 +49,7 @@ def answer_question_rag(question, full_text):
                 explanation = sent.strip()
                 break
 
-        return f"**Answer:** {answer}\n\n**📘 Explanation:** {explanation}"
+        return f"**Answer:** {answer}\n\nExplanation: {explanation}"
     
     except Exception as e:
         return f" Error: {str(e)}"
