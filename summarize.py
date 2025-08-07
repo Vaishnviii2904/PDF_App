@@ -34,6 +34,6 @@ def summarize_text(text):
             summary = result[0]['summary_text']
             all_summaries.append(f"\n{summary}")
         except Exception as e:
-            all_summaries.append(f"⚠️ Error summarizing chunk {i+1}: {str(e)}")
+            all_summaries.append(f"Error summarizing chunk {i+1}: {str(e)}")
 
     return "\n\n".join(all_summaries)
