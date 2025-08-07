@@ -1,7 +1,6 @@
 from transformers import pipeline
 import re
 
-# Load the model once
 summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 
 def clean_text(text):
@@ -26,10 +25,9 @@ def summarize_text(text):
 
     for i, chunk in enumerate(chunks):
         if len(chunk.strip().split()) < 50:
-            continue  # Skip tiny chunks
+            continue  
 
         try:
-            # Summarize this chunk
             result = summarizer(chunk, max_length=180, min_length=60, do_sample=False)
             summary = result[0]['summary_text']
             all_summaries.append(f"\n{summary}")
