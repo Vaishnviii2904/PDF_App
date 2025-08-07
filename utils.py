@@ -1,4 +1,3 @@
-# utils.py
 import PyPDF2
 import re
 
@@ -16,7 +15,7 @@ def extract_text_from_page(pdf_file, page_number):
     if 0 <= page_number < len(reader.pages):
         text = reader.pages[page_number].extract_text()
         if text:
-            text = re.sub(r'\s+', ' ', text)  # Normalize spacing
-            text = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', text)  # Add space if two words stick together
+            text = re.sub(r'\s+', ' ', text)  
+            text = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', text) 
             return text.strip()
     return ""
