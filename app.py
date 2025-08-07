@@ -8,12 +8,12 @@ from rag import answer_question_rag
 
 
 st.set_page_config(page_title="PDF Summarizer and QA", layout="wide")
-st.title("📄 PDF Summarizer and Question Answering App")
+st.title("PDF Summarizer and Question Answering App")
 
 uploaded_file = st.file_uploader("Upload a PDF File", type="pdf")
 
 if uploaded_file is not None:
-    st.success("✅ File Successfully Uploaded")
+    st.success("File Successfully Uploaded")
 
     st.subheader("What would you like to do?")
     task = st.radio(
@@ -22,7 +22,6 @@ if uploaded_file is not None:
     )
 
     if task == "Summarize a Page":
-        # Get page count
         pdf_reader = PyPDF2.PdfReader(uploaded_file)
         num_pages = len(pdf_reader.pages)
 
@@ -39,7 +38,7 @@ if uploaded_file is not None:
             if page_text:
                 with st.spinner("Summarizing..."):
                     summary = summarize_text(page_text)
-                st.subheader(f"📚 Summary of Page {selected_page}")
+                st.subheader(f"Summary of Page {selected_page}")
                 st.write(summary)
             else:
                 st.warning("Could not extract text from that page.")
@@ -53,7 +52,7 @@ if uploaded_file is not None:
                 with st.spinner("Summarizing full document..."):
                     summary = summarize_text(full_text)
 
-                st.subheader("📚 Full PDF Summary")
+                st.subheader("Full PDF Summary")
                 st.write(summary)
             else:
                 st.warning("Could not extract text from the PDF.")
@@ -70,5 +69,5 @@ if uploaded_file is not None:
                 st.subheader("Answer")
                 st.write(answer)
             else:
-                st.warning(" Could not extract text from the PDF.")
+                st.warning("Could not extract text from the PDF.")
 
